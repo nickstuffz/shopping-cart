@@ -1,0 +1,23 @@
+Requirements:
+
+
+Guidelines:
+
+
+Resources:
+Tailwind
+
+Fake Store API
+
+use React Router loading (instead of useEffect)
+
+use reacttypes
+
+use React Query (now Tanstack query)
+
+optional:
+Typescript
+Tanstack router
+
+Ideas:
+Do jewelery
