@@ -9,9 +9,9 @@ Tailwind
 
 Fake Store API
 
-use React Router loading (instead of useEffect)
+use React Router and loader (instead of useEffect)
 
-use reacttypes
+use PropTypes? 
 
 use React Query (now Tanstack query)
 
@@ -20,4 +20,16 @@ Typescript
 Tanstack router
 
 Ideas:
-Do jewelery
+Jewelery category 
+
+Fine.
+
+
+
+1. Create mockup in Figma
+2. Export to Zeplin
+3. Write first three components (Header (inside Root), Shop, Sidebar)
+4. Write test for API fetching logic
+5. Load data into Shop
+
+6. Figure out filtering products in sidebar
