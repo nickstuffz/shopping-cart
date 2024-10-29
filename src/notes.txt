@@ -24,6 +24,8 @@ Jewelery category
 
 Fine.
 
+Add custom scrollbar (bookmarked in Chrome)
+Add that border effect? From hyperplexed (i think) youtube video
 
 
 1. Create mockup in Figma
