@@ -1,16 +1,23 @@
+import { Link } from "react-router-dom";
 import logoSVG from "../assets/logo.svg";
 
 function Sidebar() {
   return (
-    <div id="sidebar" className="h-full w-[150px] bg-black text-white">
-      <div id="sidebar-logo">
-        <img src={logoSVG} />
+    <div id="sidebar-container" className="flex h-full w-40">
+      <div
+        id="sidebar"
+        className="flex h-full flex-1 flex-col items-end gap-20 border-l bg-black text-white"
+      >
+        <div id="sidebar-logo" className="mr-4 mt-20">
+          <img src={logoSVG} />
+        </div>
+        <div id="sidebar-menu" className="flex flex-col items-end gap-9">
+          <Link to={``}>HOME</Link>
+          <Link to={`shop`}>SHOP ALL</Link>
+          <Link to={`cart`}>CART</Link>
+        </div>
       </div>
-      <div id="sidebar-menu">
-        <button>HOME</button>
-        <button>SHOP ALL</button>
-        <button>CART</button>
-      </div>
+      <div className="h-full w-5 border-l bg-black"></div>
     </div>
   );
 }

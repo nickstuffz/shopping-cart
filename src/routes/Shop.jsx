@@ -1,6 +1,6 @@
 function Shop() {
   return (
-    <div id="shop" className="h-full w-full bg-gray-300">
+    <div id="shop" className="h-full flex-1 bg-gray-300">
       shop page
     </div>
   );
