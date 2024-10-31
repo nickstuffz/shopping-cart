@@ -10,14 +10,11 @@ Tailwind
 Fake Store API
 
 use React Router and loader (instead of useEffect)
+ 
 
-use PropTypes? 
-
-use React Query (now Tanstack query)
-
-optional:
+optional in future:
 Typescript
-Tanstack router
+Tanstack router 
 
 Ideas:
 Jewelery category 
