@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 function Root() {
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <Sidebar />
       <Outlet />
     </div>

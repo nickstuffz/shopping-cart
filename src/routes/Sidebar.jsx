@@ -3,7 +3,10 @@ import logoSVG from "../assets/logo.svg";
 
 function Sidebar() {
   return (
-    <div id="sidebar-container" className="flex h-full w-40">
+    <div
+      id="sidebar-container"
+      className="sticky top-0 flex h-screen w-40 min-w-max"
+    >
       <div
         id="sidebar"
         className="flex h-full flex-1 flex-col items-end gap-20 border-l bg-black text-white"

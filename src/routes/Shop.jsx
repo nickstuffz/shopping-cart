@@ -1,17 +1,23 @@
 import { useLoaderData } from "react-router-dom";
+import Card from "./Card";
 
 function Shop() {
   const { shopData } = useLoaderData();
-  console.log(shopData);
+
+  const cardGrid = shopData.map((element) => (
+    <Card
+      imgSrc={element.image}
+      title={element.title}
+      price={element.price}
+      key={element.id}
+    />
+  ));
+
   return (
-    <div id="shop" className="h-full flex-1">
-      <Card />
+    <div id="shop-grid" className="h-full min-h-max flex-1">
+      {cardGrid}
     </div>
   );
-}
-
-function Card() {
-  return <div id="card" className="h-72 w-48 border border-black"></div>;
 }
 
 export default Shop;
