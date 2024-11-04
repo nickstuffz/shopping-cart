@@ -9,7 +9,7 @@ function Sidebar() {
     >
       <div
         id="sidebar"
-        className="flex h-full flex-1 flex-col items-end gap-20 border-l bg-black text-white"
+        className="flex h-full flex-1 flex-col items-end gap-20 border-l bg-black text-white opacity-90"
       >
         <div id="sidebar-logo" className="mr-4 mt-20">
           <img src={logoSVG} />
@@ -20,7 +20,7 @@ function Sidebar() {
           <Link to={`cart`}>CART</Link>
         </div>
       </div>
-      <div className="h-full w-5 border-l bg-black"></div>
+      <div className="h-full w-5 border-l bg-black opacity-90"></div>
     </div>
   );
 }

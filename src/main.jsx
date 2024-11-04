@@ -5,6 +5,7 @@ import Root from "./routes/root";
 import Home from "./routes/Home";
 import Shop from "./routes/Shop";
 import shopLoader from "./loaders/shopLoader";
+import Product from "./routes/Product";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         path: "shop",
         element: <Shop />,
         loader: shopLoader,
+      },
+      {
+        path: "product/:productId",
+        element: <Product />,
       },
     ],
   },

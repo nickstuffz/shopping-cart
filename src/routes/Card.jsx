@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Card({ imgSrc, title, price }) {
+function Card({ imgSrc, title, price, id }) {
   return (
-    <div
+    <Link
+      to={`product/${title.split(` `).join(`-`).toLowerCase()}`}
       id="card"
-      className="flex flex-col border border-black
-        "
+      className="flex flex-col border border-dotted border-black
+    "
     >
-      <img className="h-4/5 w-full object-contain" src={imgSrc} />
-      <div className="flex h-1/5 flex-col">
-        <p className="text-xs">{title}</p>
-        <p className="text-center text-xs font-bold">${price}</p>
+      <img className="h-3/4 w-full object-contain p-4" src={imgSrc} />
+      <div className="flex flex-1 flex-col justify-evenly text-center">
+        <p className="text-sm">{title}</p>
+        <p className="font-mono font-bold">${price.toFixed(2)}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -20,6 +22,7 @@ Card.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Card;

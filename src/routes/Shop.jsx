@@ -3,6 +3,7 @@ import Card from "./Card";
 
 function Shop() {
   const { shopData } = useLoaderData();
+  console.log(shopData);
 
   const cardGrid = shopData.map((element) => (
     <Card
@@ -10,13 +11,14 @@ function Shop() {
       title={element.title}
       price={element.price}
       key={element.id}
+      id={element.id}
     />
   ));
 
   return (
     <div
       id="shop-grid"
-      className="m-3 grid h-full min-h-max flex-1 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-10"
+      className="m-3 grid h-full min-h-max flex-1 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-8"
     >
       {cardGrid}
     </div>
