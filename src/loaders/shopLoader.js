@@ -3,9 +3,9 @@ async function shopLoader() {
     mode: "cors",
   });
 
-  const shopData = await response.json();
+  const fetchedData = await response.json();
 
-  return { shopData };
+  return { fetchedData };
 }
 
 export default shopLoader;

@@ -1,5 +1,9 @@
+import { useOutletContext } from "react-router-dom";
+
 function Product() {
-  <p>product page test</p>;
+  const product = useOutletContext();
+  console.log(product);
+  return <p>Product</p>;
 }
 
 export default Product;

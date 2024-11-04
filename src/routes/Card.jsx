@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Card({ imgSrc, title, price, id }) {
+function Card({ imgSrc, title, price, slug }) {
   return (
     <Link
-      to={`product/${title.split(` `).join(`-`).toLowerCase()}`}
+      to={`product/${slug}`}
       id="card"
       className="flex flex-col border border-dotted border-black
     "
@@ -22,7 +22,7 @@ Card.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default Card;
