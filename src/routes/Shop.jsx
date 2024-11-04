@@ -27,11 +27,10 @@ function Shop() {
 
   return (
     <div
-      id="shop-grid"
-      className="grid h-full min-h-max flex-1 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-8 p-3"
+      id="shop-cardgrid"
+      className="grid h-full min-h-screen flex-1 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-8 p-3"
     >
       {cardGrid}
-      <Outlet />
     </div>
   );
 }

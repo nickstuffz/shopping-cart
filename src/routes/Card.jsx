@@ -6,7 +6,7 @@ function Card({ imgSrc, title, price, slug }) {
     <Link
       to={`${slug}`}
       id="card"
-      className="flex flex-col border border-dotted border-black
+      className="flex flex-col rounded border border-dotted border-black
     "
     >
       <img className="h-3/4 w-full object-contain p-4" src={imgSrc} />
