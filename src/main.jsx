@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         loader: shopLoader,
         children: [
           {
-            path: "product/:productId",
+            path: ":productId",
             element: <Product />,
           },
         ],

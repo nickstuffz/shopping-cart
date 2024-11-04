@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Card({ imgSrc, title, price, slug }) {
   return (
     <Link
-      to={`product/${slug}`}
+      to={`${slug}`}
       id="card"
       className="flex flex-col border border-dotted border-black
     "
