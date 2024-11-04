@@ -1,8 +1,7 @@
 async function shopLoader() {
-  const response = await fetch(
-    "https://fakestoreapi.com/products/category/jewelery",
-    { mode: "cors" },
-  );
+  const response = await fetch("https://fakestoreapi.com/products/", {
+    mode: "cors",
+  });
 
   const shopData = await response.json();
 

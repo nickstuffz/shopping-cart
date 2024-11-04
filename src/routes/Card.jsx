@@ -4,13 +4,13 @@ function Card({ imgSrc, title, price }) {
   return (
     <div
       id="card"
-      className="flex h-80 w-56 flex-col border border-black
+      className="flex flex-col border border-black
         "
     >
       <img className="h-4/5 w-full object-contain" src={imgSrc} />
-      <div className="flex h-1/5 flex-col bg-yellow-100 text-center">
+      <div className="flex h-1/5 flex-col">
         <p className="text-xs">{title}</p>
-        <p className="text-xs font-bold">${price}</p>
+        <p className="text-center text-xs font-bold">${price}</p>
       </div>
     </div>
   );
