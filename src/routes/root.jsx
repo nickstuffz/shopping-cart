@@ -16,16 +16,14 @@ let mockCart = [
   {
     id: 7,
     price: 9.99,
-    quantity: 1,
+    quantity: 99,
   },
 ];
 
 function Root() {
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState(mockCart);
 
-  // calculate cart total quantity
-
-  let sumQuantity = mockCart.reduce(
+  let sumQuantity = cart.reduce(
     (accumulator, item) => accumulator + item.quantity,
     0,
   );
@@ -37,5 +35,8 @@ function Root() {
     </div>
   );
 }
+
+// maybe pass eventhandler instead of state, actually no cuz cart
+// needs the whole cart object
 
 export default Root;

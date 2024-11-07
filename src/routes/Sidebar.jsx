@@ -3,6 +3,9 @@ import logoSVG from "../assets/logo.svg";
 import PropTypes from "prop-types";
 
 function Sidebar({ cartCount }) {
+  if (cartCount > 99) {
+    cartCount = "99+";
+  }
   return (
     <div
       id="sidebar-container"
@@ -19,7 +22,7 @@ function Sidebar({ cartCount }) {
           <Link to={``}>HOME</Link>
           <Link to={`shop`}>SHOP ALL</Link>
           <Link to={`cart`} className="flex gap-1">
-            <p className="h-4 w-4 rounded-full bg-white text-center text-xs text-black">
+            <p className="h-6 w-6 rounded-full bg-white text-center text-xs text-black">
               {cartCount}
             </p>
             <p>CART</p>
