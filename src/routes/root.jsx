@@ -25,15 +25,14 @@ function Root() {
 
   // calculate cart total quantity
 
-  let result = mockCart.reduce(
+  let sumQuantity = mockCart.reduce(
     (accumulator, item) => accumulator + item.quantity,
     0,
   );
 
-  console.log(result);
   return (
     <div className="flex">
-      <Sidebar cart={cart} />
+      <Sidebar cartCount={sumQuantity} />
       <Outlet context={[cart, setCart]} />
     </div>
   );

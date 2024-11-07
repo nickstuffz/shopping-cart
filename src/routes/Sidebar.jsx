@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import logoSVG from "../assets/logo.svg";
+import PropTypes from "prop-types";
 
-function Sidebar() {
+function Sidebar({ cartCount }) {
   return (
     <div
       id="sidebar-container"
@@ -17,12 +18,21 @@ function Sidebar() {
         <div id="sidebar-menu" className="flex flex-col items-end gap-9">
           <Link to={``}>HOME</Link>
           <Link to={`shop`}>SHOP ALL</Link>
-          <Link to={`cart`}>CART</Link>
+          <Link to={`cart`} className="flex gap-1">
+            <p className="h-4 w-4 rounded-full bg-white text-center text-xs text-black">
+              {cartCount}
+            </p>
+            <p>CART</p>
+          </Link>
         </div>
       </div>
       <div className="h-full w-5 border-l bg-black opacity-90"></div>
     </div>
   );
 }
+
+Sidebar.propTypes = {
+  cartCount: PropTypes.number.isRequired,
+};
 
 export default Sidebar;
