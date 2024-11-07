@@ -6,6 +6,7 @@ import Home from "./routes/Home";
 import Shop from "./routes/Shop";
 import shopLoader from "./loaders/shopLoader";
 import Product from "./routes/Product";
+import Cart from "./routes/Cart";
 import ErrorPage from "./routes/ErrorPage";
 import "./index.css";
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             element: <Product />,
           },
         ],
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },
