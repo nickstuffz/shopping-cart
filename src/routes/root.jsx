@@ -40,3 +40,15 @@ function Root() {
 // needs the whole cart object
 
 export default Root;
+
+// if i use a reducer what are the actions?
+
+// Product Page
+// dispatch add item to cart (any quantity)
+
+// Cart itself
+// dispatch increase quantity
+// decrease quantity
+// delete
+
+// checkout (refresh cart, clear it)

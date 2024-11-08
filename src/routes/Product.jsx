@@ -1,8 +1,26 @@
 import { useOutletContext } from "react-router-dom";
+import { useState } from "react";
 
 function Product() {
+  const [quantity, setQuantity] = useState(1);
   const product = useOutletContext();
-  console.log(product);
+
+  function handlePlusClick() {
+    if (quantity === 99) {
+      return;
+    }
+
+    setQuantity(quantity + 1);
+  }
+
+  function handleMinusClick() {
+    if (quantity === 1) {
+      return;
+    }
+
+    setQuantity(quantity - 1);
+  }
+
   return (
     <div
       id="shop-productpage"
@@ -18,7 +36,24 @@ function Product() {
         <p className="font-mono text-lg font-semibold">
           ${product.price.toFixed(2)}
         </p>
-        <button className="rounded-lg bg-black text-white">Add to cart</button>
+        <div className="flex w-28 select-none justify-evenly border border-black">
+          <p
+            onClick={handleMinusClick}
+            className="flex-1 bg-slate-300 text-center"
+          >
+            -
+          </p>
+          <div className="w-9 text-center">{quantity}</div>
+          <p
+            onClick={handlePlusClick}
+            className="flex-1 bg-slate-300 text-center"
+          >
+            +
+          </p>
+        </div>
+        <button className="w-32 rounded-lg bg-black text-white">
+          Add to cart
+        </button>
         <p>{product.description}</p>
       </div>
     </div>
