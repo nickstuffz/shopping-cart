@@ -9,7 +9,6 @@ function Product() {
     if (quantity === 99) {
       return;
     }
-
     setQuantity(quantity + 1);
   }
 
@@ -17,10 +16,12 @@ function Product() {
     if (quantity === 1) {
       return;
     }
-
     setQuantity(quantity - 1);
   }
 
+  function handleReset() {
+    setQuantity(1);
+  }
   return (
     <div
       id="shop-productpage"
@@ -36,20 +37,27 @@ function Product() {
         <p className="font-mono text-lg font-semibold">
           ${product.price.toFixed(2)}
         </p>
-        <div className="flex w-28 select-none justify-evenly border border-black">
-          <p
-            onClick={handleMinusClick}
-            className="flex-1 bg-slate-300 text-center"
-          >
-            -
-          </p>
-          <div className="w-9 text-center">{quantity}</div>
-          <p
-            onClick={handlePlusClick}
-            className="flex-1 bg-slate-300 text-center"
-          >
-            +
-          </p>
+        <div className="flex gap-3">
+          <div className="flex w-28 select-none justify-evenly border border-black">
+            <button
+              onClick={handleMinusClick}
+              className="flex-1 bg-slate-300 text-center"
+            >
+              -
+            </button>
+            <div className="w-9 text-center">{quantity}</div>
+            <button
+              onClick={handlePlusClick}
+              className="flex-1 bg-slate-300 text-center"
+            >
+              +
+            </button>
+          </div>
+          {quantity > 5 ? (
+            <button className="text-xs" onClick={handleReset}>
+              reset
+            </button>
+          ) : null}
         </div>
         <button className="w-32 rounded-lg bg-black text-white">
           Add to cart
