@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function Product() {
   const [quantity, setQuantity] = useState(1);
-  const product = useOutletContext();
+  const { product, handleAddToCart } = useOutletContext();
 
   function handlePlusClick() {
     if (quantity === 99) {
@@ -22,6 +22,7 @@ function Product() {
   function handleReset() {
     setQuantity(1);
   }
+
   return (
     <div
       id="shop-productpage"
@@ -59,7 +60,13 @@ function Product() {
             </button>
           ) : null}
         </div>
-        <button className="w-32 rounded-lg bg-black text-white">
+        <button
+          onClick={() => {
+            handleAddToCart({ id: product.id, quantity: quantity });
+            handleReset();
+          }}
+          className="w-32 rounded-lg bg-black text-white"
+        >
           Add to cart
         </button>
         <p>{product.description}</p>

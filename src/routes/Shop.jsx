@@ -1,18 +1,26 @@
-import { useLoaderData, Outlet, useParams } from "react-router-dom";
+import {
+  useLoaderData,
+  Outlet,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
 import Card from "./Card";
 
 function Shop() {
   const { fetchedData } = useLoaderData();
   const { productId } = useParams();
+  const { handleAddToCart } = useOutletContext();
 
+  // adds slug property to data
   const shopData = fetchedData.map((element) => ({
     ...element,
     slug: element.title.replace(/[ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, ""),
   }));
 
+  // renders Product route
   if (productId) {
     const product = shopData.find((element) => element.slug === productId);
-    return <Outlet context={product} />;
+    return <Outlet context={{ product, handleAddToCart }} />;
   }
 
   const cardGrid = shopData.map((element) => (

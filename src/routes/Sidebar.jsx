@@ -22,9 +22,9 @@ function Sidebar({ cartCount }) {
           <Link to={``}>HOME</Link>
           <Link to={`shop`}>SHOP ALL</Link>
           <Link to={`cart`} className="flex gap-1">
-            <p className="h-6 w-6 rounded-full bg-white text-center text-xs text-black">
-              {cartCount}
-            </p>
+            <div className="flex h-6 w-6 flex-col justify-center rounded-full bg-white text-center text-xs font-bold text-black">
+              <p>{cartCount}</p>
+            </div>
             <p>CART</p>
           </Link>
         </div>

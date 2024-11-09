@@ -2,7 +2,7 @@ Requirements:
 
 
 Guidelines:
-
+We are trusting the ID to not change at the API level
 
 Resources:
 Tailwind
@@ -31,4 +31,8 @@ Add that border effect? From hyperplexed (i think) youtube video
 4. Write test for API fetching logic
 5. Load data into Shop
 
-6. Figure out filtering products in sidebar
+
+
+Data is fetched on shop load and in adding a NEW product to cart.
+In real app, needs to have cart count validation. Probably fetch on every reload to ensure up to date info.
+Would use a query manager.

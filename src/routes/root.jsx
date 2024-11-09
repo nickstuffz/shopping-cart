@@ -2,53 +2,47 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 
-let mockCart = [
-  {
-    id: 5,
-    price: 695,
-    quantity: 5,
-  },
-  {
-    id: 6,
-    price: 168,
-    quantity: 2,
-  },
-  {
-    id: 7,
-    price: 9.99,
-    quantity: 99,
-  },
-];
-
 function Root() {
-  const [cart, setCart] = useState(mockCart);
+  const [cart, setCart] = useState([]);
 
   let sumQuantity = cart.reduce(
     (accumulator, item) => accumulator + item.quantity,
     0,
   );
 
+  async function getItemById({ id }) {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+      mode: "cors",
+    });
+
+    const fetchedData = await response.json();
+    return fetchedData;
+  }
+
+  async function handleAddToCart({ id, quantity }) {
+    if (cart.some((item) => item.id === id)) {
+      const nextCart = cart.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity + quantity };
+        } else {
+          return item;
+        }
+      });
+      setCart(nextCart);
+    } else {
+      const addedItem = await getItemById({ id });
+      const nextCart = [...cart, { ...addedItem, quantity: quantity }];
+      console.log(nextCart);
+      setCart(nextCart);
+    }
+  }
+  console.log(cart);
   return (
     <div className="flex">
       <Sidebar cartCount={sumQuantity} />
-      <Outlet context={[cart, setCart]} />
+      <Outlet context={{ handleAddToCart }} />
     </div>
   );
 }
 
-// maybe pass eventhandler instead of state, actually no cuz cart
-// needs the whole cart object
-
 export default Root;
-
-// if i use a reducer what are the actions?
-
-// Product Page
-// dispatch add item to cart (any quantity)
-
-// Cart itself
-// dispatch increase quantity
-// decrease quantity
-// delete
-
-// checkout (refresh cart, clear it)
