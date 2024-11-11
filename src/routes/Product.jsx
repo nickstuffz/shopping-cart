@@ -25,7 +25,7 @@ function Product() {
 
   return (
     <div
-      id="shop-productpage"
+      id="shop-product"
       className="grid h-full min-h-screen flex-1 grid-cols-[1fr,1fr] p-3"
     >
       <img className="object.contain p-4" src={product.image} />
@@ -62,7 +62,7 @@ function Product() {
         </div>
         <button
           onClick={() => {
-            handleAddToCart({ id: product.id, quantity: quantity });
+            handleAddToCart({ product, quantity });
             handleReset();
           }}
           className="w-32 rounded-lg bg-black text-white"

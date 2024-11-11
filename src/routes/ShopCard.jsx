@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Card({ imgSrc, title, price, slug }) {
+function ShopCard({ imgSrc, title, price, slug }) {
   return (
     <Link
-      to={`${slug}`}
-      id="card"
+      to={`/shop/${slug}`}
+      id="shop-card"
       className="flex flex-col rounded border border-dotted border-black
     "
     >
@@ -18,11 +18,11 @@ function Card({ imgSrc, title, price, slug }) {
   );
 }
 
-Card.propTypes = {
+ShopCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,
 };
 
-export default Card;
+export default ShopCard;

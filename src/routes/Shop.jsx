@@ -4,7 +4,7 @@ import {
   useOutletContext,
   useParams,
 } from "react-router-dom";
-import Card from "./Card";
+import ShopCard from "./ShopCard";
 
 function Shop() {
   const { fetchedData } = useLoaderData();
@@ -23,8 +23,8 @@ function Shop() {
     return <Outlet context={{ product, handleAddToCart }} />;
   }
 
-  const cardGrid = shopData.map((element) => (
-    <Card
+  const shopCardGrid = shopData.map((element) => (
+    <ShopCard
       imgSrc={element.image}
       title={element.title}
       price={element.price}
@@ -35,10 +35,10 @@ function Shop() {
 
   return (
     <div
-      id="shop-cardgrid"
+      id="shop"
       className="grid h-full min-h-screen flex-1 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-8 p-3"
     >
-      {cardGrid}
+      {shopCardGrid}
     </div>
   );
 }

@@ -1,46 +1,65 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
+import { mockCart } from "../assets/mockCart";
 
 function Root() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(mockCart);
 
+  // cart quantity calculation to pass to Sidebar
   let sumQuantity = cart.reduce(
-    (accumulator, item) => accumulator + item.quantity,
+    (accumulator, element) => accumulator + element.quantity,
     0,
   );
 
-  async function getItemById({ id }) {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
-      mode: "cors",
-    });
-
-    const fetchedData = await response.json();
-    return fetchedData;
-  }
-
-  async function handleAddToCart({ id, quantity }) {
-    if (cart.some((item) => item.id === id)) {
-      const nextCart = cart.map((item) => {
-        if (item.id === id) {
-          return { ...item, quantity: item.quantity + quantity };
+  function handleAddToCart({ product, quantity }) {
+    if (cart.some((element) => element.id === product.id)) {
+      const nextCart = cart.map((element) => {
+        if (element.id === product.id) {
+          return { ...element, quantity: element.quantity + quantity };
         } else {
-          return item;
+          return element;
         }
       });
       setCart(nextCart);
     } else {
-      const addedItem = await getItemById({ id });
-      const nextCart = [...cart, { ...addedItem, quantity: quantity }];
-      console.log(nextCart);
+      const nextCart = [...cart, { ...product, quantity: quantity }];
       setCart(nextCart);
     }
   }
-  console.log(cart);
+
+  function handleAddQuantity({ id }) {
+    const nextCart = cart.map((element) => {
+      if (element.id === id) {
+        return { ...element, quantity: element.quantity + 1 };
+      } else {
+        return element;
+      }
+    });
+    setCart(nextCart);
+  }
+  function handleSubtractQuantity({ id }) {
+    const nextCart = cart.map((element) => {
+      if (element.id === id) {
+        return { ...element, quantity: element.quantity - 1 };
+      } else {
+        return element;
+      }
+    });
+    setCart(nextCart);
+  }
+
   return (
     <div className="flex">
       <Sidebar cartCount={sumQuantity} />
-      <Outlet context={{ handleAddToCart }} />
+      <Outlet
+        context={{
+          cart,
+          handleAddToCart,
+          handleAddQuantity,
+          handleSubtractQuantity,
+        }}
+      />
     </div>
   );
 }
