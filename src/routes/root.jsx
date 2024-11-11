@@ -1,16 +1,9 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
-import { mockCart } from "../assets/mockCart";
 
 function Root() {
-  const [cart, setCart] = useState(mockCart);
-
-  // cart quantity calculation to pass to Sidebar
-  let sumQuantity = cart.reduce(
-    (accumulator, element) => accumulator + element.quantity,
-    0,
-  );
+  const [cart, setCart] = useState([]);
 
   function handleAddToCart({ product, quantity }) {
     if (cart.some((element) => element.id === product.id)) {
@@ -49,15 +42,31 @@ function Root() {
     setCart(nextCart);
   }
 
+  function handleDeleteItem({ id }) {
+    const nextCart = cart.filter((element) => element.id !== id);
+    setCart(nextCart);
+  }
+
+  function handleCheckout() {
+    if (cart.length === 0) {
+      alert("empty cart");
+      return;
+    } else {
+      alert("Your order has been submitted!");
+      setCart([]);
+    }
+  }
   return (
     <div className="flex">
-      <Sidebar cartCount={sumQuantity} />
+      <Sidebar cart={cart} />
       <Outlet
         context={{
           cart,
           handleAddToCart,
           handleAddQuantity,
           handleSubtractQuantity,
+          handleDeleteItem,
+          handleCheckout,
         }}
       />
     </div>

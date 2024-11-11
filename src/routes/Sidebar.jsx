@@ -2,10 +2,16 @@ import { Link } from "react-router-dom";
 import logoSVG from "../assets/logo.svg";
 import PropTypes from "prop-types";
 
-function Sidebar({ cartCount }) {
+function Sidebar({ cart }) {
+  let cartCount = cart.reduce(
+    (accumulator, element) => accumulator + element.quantity,
+    0,
+  );
+
   if (cartCount > 99) {
     cartCount = "99+";
   }
+
   return (
     <div
       id="sidebar-container"
@@ -35,7 +41,7 @@ function Sidebar({ cartCount }) {
 }
 
 Sidebar.propTypes = {
-  cartCount: PropTypes.number.isRequired,
+  cart: PropTypes.array.isRequired,
 };
 
 export default Sidebar;

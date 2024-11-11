@@ -10,6 +10,7 @@ function CartCard({
   slug,
   handleAddQuantity,
   handleSubtractQuantity,
+  handleDeleteItem,
 }) {
   return (
     <div
@@ -17,8 +18,8 @@ function CartCard({
       className="flex h-48 rounded border border-dotted border-black
     "
     >
-      <Link to={`/shop/${slug}`} className="w-1/4 border border-dotted ">
-        <img className="object-contain" src={imgSrc} />
+      <Link to={`/shop/${slug}`} className="flex w-1/4 border border-dotted ">
+        <img src={imgSrc} />
       </Link>
       <div className="flex flex-1 flex-col items-center gap-2 pt-2 text-center">
         <p className="text-sm font-bold">{title}</p>
@@ -44,6 +45,14 @@ function CartCard({
             +
           </button>
         </div>
+        <button
+          onClick={() => {
+            handleDeleteItem({ id });
+          }}
+          className="text-xs"
+        >
+          delete
+        </button>
       </div>
     </div>
   );
@@ -58,6 +67,7 @@ CartCard.propTypes = {
   slug: PropTypes.string.isRequired,
   handleAddQuantity: PropTypes.func.isRequired,
   handleSubtractQuantity: PropTypes.func.isRequired,
+  handleDeleteItem: PropTypes.func.isRequired,
 };
 
 export default CartCard;
